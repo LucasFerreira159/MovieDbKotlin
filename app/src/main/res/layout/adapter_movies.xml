@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="6dp"
+        app:cardBackgroundColor="@android:color/white"
+        android:elevation="4dp"
+        android:clickable="true"
+        android:id="@+id/card"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="5dp">
+
+
+    <!-- Layout pai (horizontal), engloba Imagem e movieDetail !-->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:layout_width="140dp"
+                android:layout_height="200dp"
+                android:id="@+id/movie_poster"
+                android:scaleType="fitXY"/>
+
+        <!-- Layout Detalhes (Vertical) !-->
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    tools:text="@string/title_movie"
+                    android:textStyle="bold"
+                    android:id="@+id/text_title"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/year_movie"
+                    android:textColor="@android:color/darker_gray"
+                    android:id="@+id/text_release_date"/>
+
+            <!-- Layout Horizontal para vote_average !-->
+            <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+            >
+
+                <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_star_yellow_24dp"/>
+
+                <TextView
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_rating"
+                        tools:text="@string/rating_movie"/>
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/text_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:layout_marginTop="16dp"
+                    tools:text="@string/descricao_teste"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

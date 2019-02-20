@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Movie DB</string>
+    <string name="title_activity_detalhe_filme">DetalheFilme</string>
+    <string name="descricao_teste">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fermentum placerat
+        volutpat. Aenean ultricies ipsum iaculis, rutrum odio pharetra, maximus nisi. Morbi elit mauris, tempus sed enim
+        ultricies, mollis porta risus. Mauris pellentesque arcu id interdum pretium. Etiam sollicitudin rhoncus nibh et
+        mattis. Donec fermentum lobortis malesuada. Praesent ultrices gravida neque, hendrerit consectetur felis
+        vehicula eget. Mauris aliquet libero at orci tempus maximus.
+    </string>
+    <string name="title_movie">Titulo Filme</string>
+    <string name="year_movie">2019</string>
+    <string name="rating_movie">5.7</string>
+    <string name="label_lancamento">Lançamento</string>
+    <string name="label_resumo">Resumo</string>
+    <string name="sem_nota">Sem nota</string>
+    <string name="label_time">Tempo</string>
+    <string name="label_orcamento">Orçamento</string>
+    <string name="label_receita">Receita</string>
+    <string name="server_error">Não foi possível conectar-se ao servidor</string>
+    <string name="without_connection">Não há conexão com internet</string>
+    <string name="connection_fail">Falha ao comunicar com servidor</string>
+    <string name="transition_name">image_transition</string>
+</resources>
