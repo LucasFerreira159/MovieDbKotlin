@@ -1,5 +1,5 @@
 # MovieDbKotlin
-Plataforma: Android
+Plataforma: Android<br>
 Versão: 1.0
 
 Aplicativo desenvolvido utilizando Retrofit para consumir serviço da API TheMovieDB com base no Kotlin.<br>
