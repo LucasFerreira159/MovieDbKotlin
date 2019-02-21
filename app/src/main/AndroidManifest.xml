@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -11,7 +12,14 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ui.movieDetail.MovieDetailActivity" android:theme="@style/Dark">
+        <activity
+                android:name=".ui.movieDetail.MovieDatailTest"
+                android:label="@string/title_activity_movie_datail_test"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".ui.movieDetail.MovieDetailActivity"
+                android:theme="@style/Dark">
         </activity>
         <activity android:name=".ui.movieList.MovieListActivity">
             <intent-filter>

@@ -1,201 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"/>
 
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+    <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.constraint.ConstraintLayout
+                android:id="@+id/constr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:background="@color/colorPrimary"/>
+                app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:id="@+id/image_backdrop_detalhe"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <android.support.constraint.Guideline
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/guideline2"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="207dp"/>
+
+            <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="170dp"
+                    android:id="@+id/image_poster_detalhe"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:transitionName="simple_activity_transition"
+                    app:layout_constraintTop_toTopOf="@+id/guideline2"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_title_detail"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/roboto_regular"
+                    app:layout_constraintStart_toEndOf="@+id/image_poster_detalhe"
+                    android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/image_backdrop_detalhe"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_genere_detail"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textSize="13sp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_title_detail"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/image_poster_detalhe" android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"/>
+
+            <ImageView
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_star_yellow_24dp"
+                    android:id="@+id/image_icon_star"
+                    android:contentDescription="TODO"
+                    app:layout_constraintStart_toEndOf="@+id/image_poster_detalhe" android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_genere_detail" tools:ignore="VectorDrawableCompat"/>
+
+            <TextView
+                    android:visibility="invisible"
+                    android:textSize="12sp"
+                    android:text="@string/sem_nota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_range_detail"
+                    app:layout_constraintStart_toEndOf="@+id/image_icon_star"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="11dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_genere_detail"/>
 
 
-        <ImageView
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:id="@+id/image_backdrop_detalhe"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:scaleType="centerCrop"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+            <TextView
+                    android:text="@string/label_resumo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:id="@+id/label_overview" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/image_poster_detalhe"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp" android:textSize="18sp" android:textStyle="bold"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_overview_detail"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/label_overview"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:textSize="14sp"
+                    android:layout_marginRight="16dp"
+            />
+            <TextView
+                    android:visibility="invisible"
+                    android:text="@string/label_lancamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/label_release" android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_overview_detail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textSize="14sp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_release_datail" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp" android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_overview_detail"/>
+            <TextView
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/label_time" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/label_release"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:text="@string/label_time"
+                    android:textSize="14sp" android:textStyle="bold"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_runtime_detail"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_release_datail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp" android:layout_marginRight="16dp"/>
+            <TextView
+                    android:visibility="invisible"
+                    android:text="@string/label_orcamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/label_orcamento" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/label_time" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold"
+                    android:textSize="14sp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_orcamento_detail" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_runtime_detail"/>
+            <TextView
+                    android:visibility="invisible"
+                    android:text="@string/label_receita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/label_receita"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/label_orcamento" android:textStyle="bold"
+                    android:textSize="14sp" android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_receita_detail" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_orcamento_detail" android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progress_detail" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="@+id/image_backdrop_detalhe" android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <android.support.constraint.Guideline
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/guideline2"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="256dp"/>
+        </android.support.constraint.ConstraintLayout>
 
-        <ImageView
-                android:layout_width="110dp"
-                android:layout_height="170dp"
-                android:id="@+id/image_poster_detalhe"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:transitionName="simple_activity_transition"
-                app:layout_constraintTop_toTopOf="@+id/guideline2"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_title_detail"
-                android:textSize="15sp"
-                android:fontFamily="@font/roboto_regular"
-                app:layout_constraintStart_toEndOf="@+id/image_poster_detalhe"
-                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/image_backdrop_detalhe"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:textStyle="bold"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_genere_detail"
-                android:fontFamily="@font/roboto_regular"
-                android:textSize="13sp"
-                app:layout_constraintTop_toBottomOf="@+id/text_title_detail"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintStart_toEndOf="@+id/image_poster_detalhe" android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"/>
+    </android.support.v4.widget.NestedScrollView>
 
-        <ImageView
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_star_yellow_24dp"
-                android:id="@+id/image_icon_star"
-                android:contentDescription="TODO"
-                app:layout_constraintStart_toEndOf="@+id/image_poster_detalhe" android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_genere_detail" tools:ignore="VectorDrawableCompat"/>
-
-        <TextView
-                android:visibility="invisible"
-                android:textSize="12sp"
-                android:text="@string/sem_nota"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_range_detail"
-                app:layout_constraintStart_toEndOf="@+id/image_icon_star"
-                android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="11dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_genere_detail"/>
-
-
-        <TextView
-                android:text="@string/label_resumo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                android:id="@+id/label_overview" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/image_poster_detalhe"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="16dp" android:textSize="18sp" android:textStyle="bold"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_overview_detail"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/label_overview"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
-                android:textSize="14sp"
-                android:layout_marginRight="16dp"
-        />
-        <TextView
-                android:visibility="invisible"
-                android:text="@string/label_lancamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/label_release" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_overview_detail"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textSize="14sp"
-                android:textStyle="bold"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_release_datail" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_overview_detail"/>
-        <TextView
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/label_time" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/label_release" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:text="@string/label_time"
-                android:textSize="14sp" android:textStyle="bold"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_runtime_detail"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_release_datail" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp" android:layout_marginRight="16dp"/>
-        <TextView
-                android:visibility="invisible"
-                android:text="@string/label_orcamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/label_orcamento" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/label_time" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:textStyle="bold"
-                android:textSize="14sp"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_orcamento_detail" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_runtime_detail"/>
-        <TextView
-                android:visibility="invisible"
-                android:text="@string/label_receita"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/label_receita"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/label_orcamento" android:textStyle="bold"
-                android:textSize="14sp" android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_receita_detail" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/text_orcamento_detail" android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-        <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progress_detail" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="@+id/image_backdrop_detalhe" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-    </android.support.constraint.ConstraintLayout>
-</android.support.v4.widget.NestedScrollView>
+</LinearLayout>
