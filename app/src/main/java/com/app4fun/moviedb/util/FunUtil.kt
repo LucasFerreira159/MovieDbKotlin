@@ -36,9 +36,9 @@ class FunUtil {
          * Método responsável por recuperar lista de generos
          * Retorna uma String para popular TextView MovieGenre
          */
-        fun getGenreFromList(listGenre: List<MovieGenre>?): String?{
+        fun getGenreFromList(listGenre: List<MovieGenre>?): String{
             var value: String = ""
-            listGenre!!.forEach {
+            listGenre?.forEach {
                 Log.i("INFO", it.name)
                 value += it.name + " "
             }
@@ -49,8 +49,8 @@ class FunUtil {
          * Verifica conexão internet
          */
         fun isOnline(context: Context): Boolean {
-            val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
-            val netInfo = cm!!.activeNetworkInfo
+            val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val netInfo = cm.activeNetworkInfo
             return netInfo != null && netInfo.isConnectedOrConnecting
         }
 

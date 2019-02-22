@@ -65,8 +65,8 @@ class AdapterMovieList(private val movies: List<Movie>, var clickListener: Click
                 .into(cover)
         }
 
-        override fun onClick(v: View?) {
-            this.listener?.onClick(v!!, adapterPosition)
+        override fun onClick(v: View) {
+            this.listener?.onClick(v, adapterPosition)
         }
     }
 

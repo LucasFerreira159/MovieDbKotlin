@@ -62,7 +62,7 @@ class MovieDetailActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
                 response?.let {
                     val movieDetail: MovieDetail? = it.body()
-                    val listMovieGenre: List<MovieGenre>? = movieDetail!!.genres
+                    val listMovieGenre: List<MovieGenre> = movieDetail!!.genres
                     if (response.isSuccessful) {
                         buildLayout(movieDetail, listMovieGenre)
                     } else {
@@ -127,17 +127,15 @@ class MovieDetailActivity : AppCompatActivity() {
         genre.text = getGenreFromList(listaMovieGenre)
 
         /* Valida se existe vote_average*/
-        if (movieDetail.vote_average == 0.0) {
-            range.text = "Não há avaliações"
-        } else {
-            range.text = movieDetail.vote_average.toString()
-        }
+        if (movieDetail.vote_average == 0.0) { range.text = "Não há avaliações" }
+        else { range.text = movieDetail.vote_average.toString() }
 
         /* Configura toolbar com title do filme */
-        setSupportActionBar(toolbar)
         toolbar.title = movieDetail.title
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
     }
 
 

@@ -1,6 +1,7 @@
 package com.app4fun.moviedb.ui.movieList
 
 import android.content.Intent
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.SearchView
@@ -32,16 +33,12 @@ class MovieListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.app4fun.moviedb.R.layout.activity_movie_list)
+        tb_main.title = "Próximos Filmes"
         setSupportActionBar(tb_main)
-        supportActionBar!!.title = "Próximos Filmes"
-        supportActionBar!!.elevation = 4.0F
 
         //verifica conexao
-        if (isOnline(this)) {
-            callMovieAPI()
-        } else {
-            showErrorMsg("Não há conexão com internet")
-        }
+        if (isOnline(this)) { callMovieAPI() }
+        else { showErrorMsg("Não há conexão com internet") }
     }
 
     /**
@@ -72,9 +69,9 @@ class MovieListActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
                     if (response != null) {
-                        val movieResponse: MovieResponse = response.body()!!
-                        movieList = movieResponse.results
-                        buildRecyclerView(movieList)
+                        val movieResponse: MovieResponse? = response.body()
+                            if(movieResponse != null) { movieList = movieResponse.results }
+                            buildRecyclerView(movieList)
                     }
                 }else{
                     showErrorMsg(getString(com.app4fun.moviedb.R.string.server_error))
@@ -110,9 +107,11 @@ class MovieListActivity : AppCompatActivity() {
             recycler_movies.adapter = AdapterMovieList(movies, object : ClickListener {
                 override fun onClick(view: View, pos: Int) {
                     //Pega objeto da posição da lista e envia para Tela Detalhes
-                    val intent = Intent(applicationContext, MovieDetailActivity::class.java)
-                    intent.putExtra("selectedMovie", movies!![pos])
-                    startActivity(intent)
+                    if(movies != null){
+                        val intent = Intent(applicationContext, MovieDetailActivity::class.java)
+                        intent.putExtra("selectedMovie", movies[pos])
+                        startActivity(intent)
+                    }
                 }
             })
         } else {
@@ -120,21 +119,19 @@ class MovieListActivity : AppCompatActivity() {
             recycler_movies.adapter = null
         }
 
-        if(recycler_movies.adapter != null){
-            runLayoutAnimation(recycler_movies)
-        }
-
+        if(recycler_movies.adapter != null) { runLayoutAnimation(recycler_movies) }
     }
 
     /**
      * Este método faz com que a animação seja carregada ao iniciar o adapter do recyclerview
      */
     private fun runLayoutAnimation(recyclerView: RecyclerView) {
+
         val context = recyclerView.context
         val controller = AnimationUtils.loadLayoutAnimation(context, com.app4fun.moviedb.R.anim.layout_animation_fall_down)
 
         recyclerView.layoutAnimation = controller
-        recyclerView.adapter!!.notifyDataSetChanged()
+        recyclerView.adapter?.notifyDataSetChanged()
         recyclerView.scheduleLayoutAnimation()
     }
 
@@ -143,7 +140,7 @@ class MovieListActivity : AppCompatActivity() {
      */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(com.app4fun.moviedb.R.menu.menu_main, menu)
-        val searchItem = menu!!.findItem(com.app4fun.moviedb.R.id.action_search)
+        val searchItem = menu?.findItem(com.app4fun.moviedb.R.id.action_search)
         if (searchItem != null) {
             val searchItem = searchItem.actionView as SearchView
             searchItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
@@ -153,11 +150,8 @@ class MovieListActivity : AppCompatActivity() {
 
                 /* Busca query na movieList em tempo real*/
                 override fun onQueryTextChange(query: String?): Boolean {
-                    if (query!!.isNotEmpty()) {
-                        searchMovie(query.toLowerCase())
-                    }else{
-                        buildRecyclerView(movieList)
-                    }
+                    if (!query.isNullOrEmpty()) { searchMovie(query.toLowerCase()) }
+                    else{ buildRecyclerView(movieList) }
                     return true
                 }
             })
@@ -174,12 +168,10 @@ class MovieListActivity : AppCompatActivity() {
         filteredMovies.clear()
 
         for (i in movieList) {
-            if (i.title.toLowerCase().contains(query)) {
-                filteredMovies.add(i)
-            }else{
-                showErrorMsg("Filme não encontrado nos próximos lançamentos")
-            }
+            if (i.title.toLowerCase().contains(query)) { filteredMovies.add(i) }
+            else{ showErrorMsg("Filme não encontrado nos próximos lançamentos") }
         }
+
         buildRecyclerView(filteredMovies)
     }
 }
