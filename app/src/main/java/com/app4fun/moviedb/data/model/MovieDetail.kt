@@ -1,7 +1,6 @@
 package com.app4fun.moviedb.data.model
 
-class MovieDetail (
-
+data class MovieDetail (
     val backdrop_path: Any,
     val genres: List<MovieGenre>,
     val overview: String,

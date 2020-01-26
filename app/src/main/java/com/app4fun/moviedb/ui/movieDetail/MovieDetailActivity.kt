@@ -1,6 +1,5 @@
 package com.app4fun.moviedb.ui.movieDetail
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import android.view.View
@@ -9,7 +8,7 @@ import com.app4fun.moviedb.R
 import com.app4fun.moviedb.data.model.Movie
 import com.app4fun.moviedb.data.model.MovieDetail
 import com.app4fun.moviedb.data.model.MovieGenre
-import com.app4fun.moviedb.data.network.response.ServiceMovieDetail
+import com.app4fun.moviedb.data.network.ServiceAPI
 import com.app4fun.moviedb.util.ConstantsUtil
 import com.app4fun.moviedb.util.FunUtil
 import com.app4fun.moviedb.util.FunUtil.Companion.formatData
@@ -55,7 +54,7 @@ class MovieDetailActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val apiDetail = retrofit.create(ServiceMovieDetail::class.java)
+        val apiDetail = retrofit.create(ServiceAPI::class.java)
         val call = apiDetail.getDetail(id)
         call.enqueue(object : Callback<MovieDetail> {
 

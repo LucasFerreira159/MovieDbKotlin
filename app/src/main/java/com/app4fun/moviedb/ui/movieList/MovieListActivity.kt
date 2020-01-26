@@ -1,7 +1,6 @@
 package com.app4fun.moviedb.ui.movieList
 
 import android.content.Intent
-import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.SearchView
@@ -15,7 +14,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.view.Menu
 import com.app4fun.moviedb.data.model.Movie
-import com.app4fun.moviedb.data.network.ServiceMovie
 import com.app4fun.moviedb.data.network.response.MovieResponse
 import com.app4fun.moviedb.listener.ClickListener
 import com.app4fun.moviedb.ui.movieDetail.MovieDetailActivity
@@ -23,6 +21,7 @@ import com.app4fun.moviedb.util.ConstantsUtil
 import com.app4fun.moviedb.util.FunUtil.Companion.isOnline
 import android.view.animation.AnimationUtils
 import android.support.v7.widget.RecyclerView
+import com.app4fun.moviedb.data.network.ServiceAPI
 import com.app4fun.moviedb.util.FunUtil.Companion.getScreenSizeLayout
 
 
@@ -63,7 +62,7 @@ class MovieListActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val movieService = retrofit.create(ServiceMovie::class.java)
+        val movieService = retrofit.create(ServiceAPI::class.java)
         val call = movieService.getResults()
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
